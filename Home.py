@@ -1,5 +1,6 @@
 import streamlit as st
 
+from src.data import display_dataframe, upload_file
 from src.utils import page_configuration
 
 def main():
@@ -16,6 +17,10 @@ def main():
         """
     )
 
+    transactions = upload_file()
+
+    if st.session_state["uploaded_file"] is not None:
+        dataframe = display_dataframe(file=st.session_state["uploaded_file"])
 
 if __name__ == '__main__':
     main()
